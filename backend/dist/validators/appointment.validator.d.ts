@@ -1,0 +1,84 @@
+import { z } from "zod";
+export declare const consultationTypeSchema: z.ZodEnum<["IN_PERSON", "ONLINE"]>;
+export declare const appointmentPrioritySchema: z.ZodEnum<["LOW", "NORMAL", "HIGH", "EMERGENCY"]>;
+export declare const appointmentStatusSchema: z.ZodEnum<["SCHEDULED", "CONFIRMED", "IN_PROGRESS", "COMPLETED", "CANCELLED", "NO_SHOW"]>;
+export declare const createAppointmentSchema: z.ZodObject<{
+    patientId: z.ZodString;
+    doctorId: z.ZodString;
+    departmentId: z.ZodString;
+    appointmentDate: z.ZodString;
+    startTime: z.ZodString;
+    endTime: z.ZodString;
+    consultationType: z.ZodOptional<z.ZodEnum<["IN_PERSON", "ONLINE"]>>;
+    priority: z.ZodOptional<z.ZodEnum<["LOW", "NORMAL", "HIGH", "EMERGENCY"]>>;
+    reasonForVisit: z.ZodOptional<z.ZodString>;
+    symptoms: z.ZodOptional<z.ZodString>;
+    notes: z.ZodOptional<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    patientId: string;
+    doctorId: string;
+    departmentId: string;
+    appointmentDate: string;
+    startTime: string;
+    endTime: string;
+    consultationType?: "IN_PERSON" | "ONLINE" | undefined;
+    priority?: "LOW" | "NORMAL" | "HIGH" | "EMERGENCY" | undefined;
+    reasonForVisit?: string | undefined;
+    symptoms?: string | undefined;
+    notes?: string | undefined;
+}, {
+    patientId: string;
+    doctorId: string;
+    departmentId: string;
+    appointmentDate: string;
+    startTime: string;
+    endTime: string;
+    consultationType?: "IN_PERSON" | "ONLINE" | undefined;
+    priority?: "LOW" | "NORMAL" | "HIGH" | "EMERGENCY" | undefined;
+    reasonForVisit?: string | undefined;
+    symptoms?: string | undefined;
+    notes?: string | undefined;
+}>;
+export declare const updateAppointmentSchema: z.ZodObject<{
+    patientId: z.ZodOptional<z.ZodString>;
+    doctorId: z.ZodOptional<z.ZodString>;
+    departmentId: z.ZodOptional<z.ZodString>;
+    appointmentDate: z.ZodOptional<z.ZodString>;
+    startTime: z.ZodOptional<z.ZodString>;
+    endTime: z.ZodOptional<z.ZodString>;
+    consultationType: z.ZodOptional<z.ZodEnum<["IN_PERSON", "ONLINE"]>>;
+    priority: z.ZodOptional<z.ZodEnum<["LOW", "NORMAL", "HIGH", "EMERGENCY"]>>;
+    status: z.ZodOptional<z.ZodEnum<["SCHEDULED", "CONFIRMED", "IN_PROGRESS", "COMPLETED", "CANCELLED", "NO_SHOW"]>>;
+    reasonForVisit: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    symptoms: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    notes: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+}, "strip", z.ZodTypeAny, {
+    status?: "SCHEDULED" | "CONFIRMED" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED" | "NO_SHOW" | undefined;
+    patientId?: string | undefined;
+    doctorId?: string | undefined;
+    departmentId?: string | undefined;
+    appointmentDate?: string | undefined;
+    startTime?: string | undefined;
+    endTime?: string | undefined;
+    consultationType?: "IN_PERSON" | "ONLINE" | undefined;
+    priority?: "LOW" | "NORMAL" | "HIGH" | "EMERGENCY" | undefined;
+    reasonForVisit?: string | null | undefined;
+    symptoms?: string | null | undefined;
+    notes?: string | null | undefined;
+}, {
+    status?: "SCHEDULED" | "CONFIRMED" | "IN_PROGRESS" | "COMPLETED" | "CANCELLED" | "NO_SHOW" | undefined;
+    patientId?: string | undefined;
+    doctorId?: string | undefined;
+    departmentId?: string | undefined;
+    appointmentDate?: string | undefined;
+    startTime?: string | undefined;
+    endTime?: string | undefined;
+    consultationType?: "IN_PERSON" | "ONLINE" | undefined;
+    priority?: "LOW" | "NORMAL" | "HIGH" | "EMERGENCY" | undefined;
+    reasonForVisit?: string | null | undefined;
+    symptoms?: string | null | undefined;
+    notes?: string | null | undefined;
+}>;
+export type CreateAppointmentInput = z.infer<typeof createAppointmentSchema>;
+export type UpdateAppointmentInput = z.infer<typeof updateAppointmentSchema>;
+//# sourceMappingURL=appointment.validator.d.ts.map

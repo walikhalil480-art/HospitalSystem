@@ -1,0 +1,20 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = require("../middlewares/auth");
+const laboratory_controller_1 = require("../controllers/laboratory.controller");
+const router = (0, express_1.Router)();
+router.use(auth_1.requireAuth);
+router.get("/categories", laboratory_controller_1.getLabCategories);
+router.post("/categories", laboratory_controller_1.addLabCategory);
+router.get("/tests", laboratory_controller_1.getLabTests);
+router.post("/tests", laboratory_controller_1.addLabTest);
+router.get("/", laboratory_controller_1.getLabOrders);
+router.get("/:id", laboratory_controller_1.fetchLabOrderById);
+router.post("/", laboratory_controller_1.registerLabOrder);
+router.put("/:id", laboratory_controller_1.editLabOrder);
+router.post("/:id/result", laboratory_controller_1.addLabResult);
+router.put("/:id/result", laboratory_controller_1.editLabResult);
+router.delete("/:id", laboratory_controller_1.removeLabOrder);
+exports.default = router;
+//# sourceMappingURL=laboratory.route.js.map
