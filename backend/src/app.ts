@@ -51,14 +51,12 @@ app.use("/api/v1/laboratory", laboratoryRoutes);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Health check endpoint
-app.get("/api/v1/health", (req, res) => {
+app.get("/health", (_req, res) => {
   res.status(200).json({
-    success: true,
-    message: "Hospital Management System API is running",
-    data: {
-      status: "ok",
-      timestamp: new Date(),
-    },
+    status: "OK",
+    message: "Hospital API is healthy",
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString(),
   });
 });
 
