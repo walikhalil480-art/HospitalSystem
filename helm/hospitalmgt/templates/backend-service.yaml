@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hospital-backend-service
+spec:
+  type: {{ .Values.backend.service.type }}
+  selector:
+    app: hospital-backend
+  ports:
+    - port: {{ .Values.backend.service.port }}
+      targetPort: {{ .Values.backend.service.port }}

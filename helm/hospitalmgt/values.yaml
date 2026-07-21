@@ -1,0 +1,42 @@
+backend:
+  replicaCount: 1
+
+  image:
+    repository: khalilart/hospital-backend
+    tag: "1.0.0"
+    pullPolicy: IfNotPresent
+
+  service:
+    type: ClusterIP
+    port: 5000
+
+  env:
+    PORT: "5000"
+    NODE_ENV: "production"
+
+frontend:
+  replicaCount: 1
+  image:
+    repository: khalilart/hospital-frontend
+    tag: "1.0.0"
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 80
+
+postgres:
+  image:
+    repository: postgres
+    tag: "15"
+
+  service:
+    port: 5432
+
+  database: hospital
+  username: postgres
+  password: CHANGE_ME
+  databaseUrl: "postgresql://postgres:CHANGE_ME@postgres-service:5432/hospital?schema=public"
+
+jwt:
+  secret: "hospital-mgt-super-secret-jwt-key-change-in-production-2026"
+  refreshSecret: "hospital-super-secret-refresh-jwt"
